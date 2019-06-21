@@ -52,7 +52,7 @@ cleanup(){
 
 hostalive(){
   cat ./$domain/$foldername/$domain.txt | sort -u | while read line; do
-    if [ $(curl --write-out %{http_code} --silent --output /dev/null -m 5 $curlflag $urlscheme://$line) = 000 ]
+    if [ $(curl --write-out %{http_code} --silent --output /dev/null -m 10 $curlflag $urlscheme://$line) = 000 ]
     then
       echo "$line was unreachable"
       touch ./$domain/$foldername/unreachable.html
